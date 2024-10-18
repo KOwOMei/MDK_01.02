@@ -75,10 +75,11 @@ def show_image():
     image_window = tk.Toplevel(root)
     image_window.title("well...")
     image_window.resizable(False, False)  
+    image_window.overrideredirect(True) 
 
     # Центрирование нового окна
-    window_width = 380
-    window_height = 220
+    window_width = 360
+    window_height = 200
     screen_width = image_window.winfo_screenwidth()
     screen_height = image_window.winfo_screenheight()
     position_top = int(screen_height / 2 - window_height / 2)
@@ -88,7 +89,7 @@ def show_image():
     # Метка для отображения изображения в новом окне
     image_label = tk.Label(image_window, image=img_tk)
     image_label.image = img_tk  # Сохранение ссылки на изображение
-    image_label.pack(pady=10)
+    image_label.pack(pady=1)
 
     image_window.after(7000, image_window.destroy)
 
@@ -139,8 +140,8 @@ check_button = tk.Button(root, text="Проверить", command=on_check_butto
 check_button.pack(pady=5)
 
 # Кнопка для вывода круга
-circle_button = tk.Button(root, text="🟣", command=show_image)
-circle_button.pack(pady=5)
+circle_button = tk.Button(root, text="🟣", command=show_image, borderwidth=0, highlightthickness=0)
+circle_button.place(x=380, y=0)
 
 # Метка для отображения результата
 result_label = tk.Label(root, text="")
